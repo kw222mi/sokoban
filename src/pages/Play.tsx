@@ -72,28 +72,27 @@ export const Play = () => {
         )}
         {playMode === "powerups" && (
           <div className="play-container">
-        
             {powerLevels.map((x, index) => {
-              return (
-                <Level
-                  key={index}
-                  level={x.level}
-                  image={x.image}
-                />
-              );
+              return <Level key={index} level={x.level} image={x.image} />;
             })}
           </div>
         )}
         {playMode === "custom" && (
-            <>
-          
-          <div className="play-container">
-        
-            {customLevels.length === 0 ? <p>You haven't created any levels yet. Create your first to play.</p> : customLevels.map((x:number[][], index:number) => {
-              return <Level key={index} level={index} />;
-            })}
-          </div>
-          <button className="create-level-btn" onClick={createLevelClick}><span>+</span> Create Level</button>
+          <>
+            <div className="play-container">
+              {customLevels.length === 0 ? (
+                <p>
+                  You haven't created any levels yet. Create your first to play.
+                </p>
+              ) : (
+                customLevels.map((_: number[][], index: number) => {
+                  return <Level key={index} level={index} />;
+                })
+              )}
+            </div>
+            <button className="create-level-btn" onClick={createLevelClick}>
+              <span>+</span> Create Level
+            </button>
           </>
         )}
       </>
